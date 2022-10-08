@@ -1,0 +1,30 @@
+/**** tag section *****/
+h1{
+  animation-duration: 5s;
+  animation-name: slidein;
+   animation-iteration-count: 3;
+   animation-direction: alternate;
+}
+/*img{
+
+  background-color: #66bfbf;
+}*/
+
+/**** class section *****/
+.bacon{
+  background-color: blue;
+}
+
+.bacon:hover{
+  background-color: gold;
+}
+
+@keyframes slidein {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}

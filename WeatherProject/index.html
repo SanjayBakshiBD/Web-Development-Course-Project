@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather App</title>
+</head>
+
+<body>
+  <script>
+  // This checks if is location permission is given
+    if ('geolocation' in navigator) {
+
+      // This block of code finds the latitude and longitude
+      console.log("geolocation is enabled");
+      navigator.geolocation.getCurrentPosition(function(position){
+        //console.log(position);
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // This block of code sends the first post request to Server
+        const data = {latitude, longitude};
+        const options={
+          method: "POST",
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        };
+        fetch("/api", options);
+      });
+
+
+// This is second post request
+      window.onload = function(){
+        document.getElementById('submitButton').click();
+      }
+
+    }
+
+    else {
+      console.log("geolocation is not enabled");
+    }
+
+  </script>
+
+  <form  action="/" method="post">
+    <button id="submitButton" type="submit" name="button"></button>
+  </form>
+
+</body>
+
+</html>
